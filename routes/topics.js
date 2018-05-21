@@ -41,6 +41,20 @@ const updateTopic = async (req, res) => {
   }
 }
 
+const updateTopicTitle = async (req, res) => {
+  const { id } = req.params;
+
+  const { title } = req.body;
+  console.log('title', title);
+
+  try {
+    const topic = await Topics.updateOne({ _id: id }, { title: title });
+    res.json({ message: 'Successfully updated title' });
+  } catch (err) {
+    res.send(err);
+  }
+}
+
 const deleteTopic = async (req, res) => {
   const { id } = req.params;
 
@@ -71,4 +85,5 @@ module.exports = {
   getTopics,
   deleteTopic,
   updateTopic,
+  updateTopicTitle,
 };

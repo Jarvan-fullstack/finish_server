@@ -46,6 +46,8 @@ app.route('/users')
   .get(users.getUsers)
   .post(users.createUser);
 
+app.post('/users/login', users.userLogin);
+
 app.route('/users/:id')
   .get(users.getUser)
   .post(users.updateUser);
@@ -63,6 +65,8 @@ app.route('/topics')
 app.route('/topics/:id')
   .post(topics.updateTopic)
   .delete(topics.deleteTopic);
+
+app.post('/topics/:id/updateTitle', topics.updateTopicTitle);
 
 
 // catch 404 and forward to error handler

@@ -11,7 +11,9 @@ const getNotifications = (req, res) => {
 }
 
 const createNotification = (req, res) => {
+  console.log('req.body', req.body);
   let newNotification = Object.assign(new Notifications(), req.body);
+  console.log('newNotification', newNotification);
 
   newNotification.save((err, notification) => {
     if (err) {

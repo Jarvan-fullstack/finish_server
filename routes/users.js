@@ -46,9 +46,23 @@ const createUser = (req, res) => {
   });
 }
 
+const userLogin = (req, res) => {
+  console.log('req.body', req.body);
+  const { userName } = req.body;
+  
+  Users.findOne({ userName }, (err, user) => {
+    if (err) {
+      res.send(err);
+    }
+
+    res.json(user);
+  });
+};
+
 module.exports = {
   getUsers,
   getUser,
   createUser,
   updateUser,
+  userLogin,
 };
